@@ -1,0 +1,7 @@
+Django==3.2.16
+PyMySQL==1.0.2
+django-filter==22.1
+djangorestframework==3.14.0
+Markdown==3.4.1
+djangorestframework-simplejwt==5.2.2
+python-dotenv==0.21.0
