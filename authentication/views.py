@@ -7,21 +7,22 @@ from django.contrib.messages import constants
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http.response import HttpResponseRedirect
-from django.contrib.auth import login, logout
-
-# authentication 
+from django.contrib.auth import login, logout, authenticate
 
 def login_simple(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request,user)
-            if 'next' in request.GET:
-                nextPage = request.GET['next']
-                return HttpResponseRedirect(nextPage)
-            else:
-                return redirect('/')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username)
+        print(password)
+        user = authenticate(username=username, password=password)
+        if user:
+            print('passou')
+            login(request, user)
+            return redirect('/')
+        else:
+            return redirect('/authentication/login')
+
     else:
         form =AuthenticationForm()
     context={"breadcrumb":{"parent":"parent","child":"child"},"form":form}
