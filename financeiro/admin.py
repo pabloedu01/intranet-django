@@ -23,7 +23,7 @@ class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
         return(responsavel)
     raw_id_fields = ['beneficiario']
     list_display = ['id','beneficiario','grupo','empresa','value', 'status','responsavel']
-    list_filter = ['tipo_pagamento']   
+    list_filter = ['tipo_pagamento','owner__first_name']   
     
     def save_model(self, request, obj, form, change):
         if request.user.is_superuser == False:
