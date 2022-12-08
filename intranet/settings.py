@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'cadastros',
     'rest_framework',
     'django_filters',
-    'smart_selects',
+    # 'smart_selects',
     'autenticacao',
     'sass_processor'
 ]

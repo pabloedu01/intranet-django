@@ -9,3 +9,6 @@ djangorestframework==3.14.0
 Markdown==3.4.1
 djangorestframework-simplejwt==5.2.2
 python-dotenv==0.21.0
+libsass
+django-compressor
+django-sass-processor
