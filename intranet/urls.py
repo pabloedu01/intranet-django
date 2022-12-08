@@ -7,9 +7,9 @@ from . import views
 
 admin.site.site_header = 'TUNAP do Brasil'
 urlpatterns = [
-    path('', views.indexPage,name='indexPage'),
-    path('',include('autenticacao.urls')),
-    path('',include('dashboards.urls')),
+    # path('', views.indexPage,name='indexPage'),
+    # path('',include('autenticacao.urls')),
+    # path('',include('dashboards.urls')),
     path('admin/', admin.site.urls),
     path('auth/',include('autenticacao.urls')),
 ]

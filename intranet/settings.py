@@ -16,15 +16,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dashboards',
+    # 'dashboards',
     'financeiro',
-    'core',
+    # 'core',
     'cadastros',
-    'rest_framework',
-    'django_filters',
+    # 'rest_framework',
+    # 'django_filters',
     # 'smart_selects',
-    'autenticacao',
-    'sass_processor'
+    # 'autenticacao',
+    # 'sass_processor'
 ]
 
 MIDDLEWARE = [
