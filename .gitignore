@@ -1,3 +1,5 @@
 db.sqlite3
 .vercel
 .venv
+__pycache__
+migrations
