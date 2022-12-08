@@ -8,12 +8,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@9z(i82%2@79e#cx(m=^58k$00-iop)j=4nsmikf9b8%-(vou*'
 DEBUG = True
-ALLOWED_HOSTS = [
-    "api.tunapbi.com.br",
-    "127.0.0.1",
-    "localhost",
-    "10.111.35.201"
-    ]
+ALLOWED_HOSTS = ['.vercel.app' , '.now.sh','.pabloedu.com','localhost','127.0.0.1']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -110,9 +105,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
-SASS_PROCESSOR_ROOT = BASE_DIR / 'static'
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / 'static'
+# SASS_PROCESSOR_ROOT = BASE_DIR / 'static'
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
