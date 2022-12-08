@@ -1,5 +1,6 @@
 __pycache__/
 .direnv/
+.venv
 node_modules/
 .envrc
 *.sqlite3
