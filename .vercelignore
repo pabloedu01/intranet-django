@@ -3,7 +3,6 @@ __pycache__/
 .venv
 node_modules/
 .envrc
-*.sqlite3
 vercel.json
 README.md
 yarn.lock
