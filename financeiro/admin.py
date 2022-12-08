@@ -16,11 +16,8 @@ class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
     def grupo(self, obj):
         grupo = Grupo.objects.get(id=obj.beneficiario.grupo_id).name
         return(grupo)
-    def responsavel(self, obj):
-        responsavel = obj.owner.first_name
-        return(responsavel)
     raw_id_fields = ['beneficiario']
-    list_display = ['id','beneficiario','grupo','empresa','value', 'status','responsavel']
+    list_display = ['id','beneficiario','grupo','empresa','value', 'status']
     list_filter = ['tipo_pagamento','owner']   
     
     def save_model(self, request, obj, form, change):
