@@ -1,7 +1,0 @@
-sqlparse==0.4.2
-tzdata==2022.1
-PyMySQL==1.0.2
-django-filter==22.1
-djangorestframework==3.14.0
-Markdown==3.4.1
-djangorestframework-simplejwt==5.2.2
