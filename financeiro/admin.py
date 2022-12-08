@@ -11,11 +11,9 @@ from django.core.exceptions import ValidationError
 @admin.register(Solicitacao_Pagamento)
 class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
     def empresa(self, obj):
-        # beneficiario = Beneficiario.objects.get(id=obj.beneficiario_id)
         empresa = Empresa.objects.get(id=obj.beneficiario.empresa_id).name
         return(empresa)
     def grupo(self, obj):
-        # beneficiario = Beneficiario.objects.get(id=obj.beneficiario_id)
         grupo = Grupo.objects.get(id=obj.beneficiario.grupo_id).name
         return(grupo)
     def responsavel(self, obj):
@@ -23,7 +21,7 @@ class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
         return(responsavel)
     raw_id_fields = ['beneficiario']
     list_display = ['id','beneficiario','grupo','empresa','value', 'status','responsavel']
-    list_filter = ['tipo_pagamento','owner__first_name']   
+    list_filter = ['tipo_pagamento','owner']   
     
     def save_model(self, request, obj, form, change):
         if request.user.is_superuser == False:

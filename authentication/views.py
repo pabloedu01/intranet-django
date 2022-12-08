@@ -15,7 +15,6 @@ def login_simple(request):
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user:
-            print('passou')
             login(request, user)
             return redirect('/')
         else:
@@ -28,7 +27,6 @@ def login_simple(request):
 
 
 def logout_view(request):
-    print('aqui')
     logout(request)
     return redirect('login')
 
