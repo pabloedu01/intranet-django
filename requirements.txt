@@ -3,3 +3,4 @@ libsass==0.22.0
 python-dotenv==0.21.0
 django-compressor
 django-sass-processor
+PyMySQL
