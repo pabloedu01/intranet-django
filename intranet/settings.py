@@ -146,6 +146,7 @@ STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 SASS_PROCESSOR_ROOT = BASE_DIR / 'static'
 
+MEDIA_ROOT = 'media'
 
 STATICFILES_FINDERS = [
 'django.contrib.staticfiles.finders.FileSystemFinder',
