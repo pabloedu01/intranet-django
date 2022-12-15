@@ -1,6 +1,6 @@
 .sqlite3
 .vercel
 .venv
+.env
 __pycache__
 migrations
-.env

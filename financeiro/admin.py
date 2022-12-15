@@ -26,7 +26,6 @@ class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
             obj.owner = owner
         else:
             pass
-        # print(obj.status.id)
         if request.user.is_superuser == False:
             obj.status = Status_Solicitacao.objects.get(id=1)
         super(Solicitacao_PagamentoAdmin, self).save_model(request, obj, form, change)
@@ -34,12 +33,7 @@ class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         if request.POST and request.POST.get('action') == 'delete_selected':
             if '2' in request.POST.getlist('_selected_action'):
-                # print(request.POST.getlist('_selected_action'))
                 messages.info(request, f'Status não permite ser deletado!')
-
-                # raise ValidationError([
-                # ValidationError('Erro no delete', code='')
-            # ])
                 return False
             return True
         return obj is None or obj.pk != 2
