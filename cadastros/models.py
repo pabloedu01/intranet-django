@@ -93,7 +93,6 @@ class BeneficiarioEmail(models.Model):
 class Beneficiario(models.Model):
     id = models.BigAutoField(primary_key=True)
     empresa = models.ForeignKey('Empresa', on_delete=models.CASCADE)
-    grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     cnpj = models.CharField(unique=True, max_length=19, blank=True, null=True)
     cpf = models.CharField(unique=True, max_length=19, blank=True, null=True)
@@ -183,11 +182,7 @@ class Cartao(models.Model):
         ("a", "Ativo"),
         ("c", "Cancelado")
     )
-    tipo_cartao = (
-        ("pp", "Pic Pontos"),
-        ("fc", "Fullcard"),
-        ("fs", "Full Shop")
-    )
+    
     id_cartao = models.BigAutoField(primary_key=True)
     id_beneficiario = models.ForeignKey(Beneficiario, on_delete=models.CASCADE, blank=True, null=True)
     status = models.CharField(max_length=240, choices=status, default="p")

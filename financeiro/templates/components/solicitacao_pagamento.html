@@ -1,0 +1,178 @@
+{% load static %}
+{% load sass_tags %}
+{% load tratamentos %}
+<div class="container-fluid">
+
+
+  <div class="col-md-12 project-list">
+    <div class="card">
+      <form action="?" method="GET">
+
+        <div class="row">
+          <div class="col-md-6">
+            <input class="form-control" type="search" placeholder="Buscar" , name="busca" data-original-title="" ,
+              value={{ request.GET.busca }}>
+          </div>
+          <div class="col-md">
+            <input type="submit" class="btn btn-primary" value="Buscar">
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+
+
+
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-primary">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Beneficiario</th>
+                <th scope="col">Grupo</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Tipo de pagamento</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in page_obj%}
+              <tr>
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.beneficiario.name}}</td>
+                <td>{{i.beneficiario.empresa.grupo.name }}</td>
+                <td>{{i.beneficiario.empresa.name}}</td>
+                <td>{{i.tipo_pagamento.nome}}</td>
+                <td>{{i.value|currency}}</td>
+                <td>{{i.status|none}}</td>
+
+
+
+
+                <td>
+                  <button class="btn btn-danger btn-xs" type="button" data-original-title="btn btn-danger btn-xs"
+                    id="{{i.id}}"><a href="financeiro/solicitacao_pagamento/delete/{{i.id}}/">Delete</a></button></form>
+                  <button class="btn btn-success btn-xs" type="button" data-original-title="btn btn-danger btn-xs"
+                    title="">Edit</button>
+                    <form method="POST" action="">{% csrf_token %}
+                      <a href="solicitacao_pagamento/delete/{{i.id}}"><i class="icon"><i class="icon-trash"></i></i></a>
+                    </form>
+                </td>
+
+
+
+
+
+
+              </tr>
+
+              {% endfor %}
+              <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">Total</th>
+                <th scope="col">{{total.total|currency}}</th>
+
+                </th>
+                <th scope="col"></th>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <nav aria-label="Page">
+            <ul class="pagination pagination-primary">
+              {% if page_obj.has_previous %}
+
+              <li class="page-item"><a class="page-link"
+                  href="?page={{ page_obj.previous_page_number }}&busca={{ request.GET.busca }}">Anterior</a>
+              </li>
+              {% endif %}
+
+              {% if is_paginated %}
+
+              {% if page_obj.has_previous %}
+              <li><a href="?page={{ page_obj.previous_page_number }}&busca={{request.GET.busca}}">&laquo;</a></li>
+              {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+              {% endif %}
+              {% for i in paginator.page_range %}
+              {% if page_obj.number == i %}
+              <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+              <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+              {% endfor %}
+              {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number }}&busca={{request.GET.busca}}">&raquo;</a></li>
+              {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+              {% endif %}
+
+              {% endif %}
+
+
+              {% if page_obj.has_next %}
+
+              <li class="page-item"><a class="page-link"
+                  href="?page={{ page_obj.next_page_number }}&busca={{request.GET.busca}}">Próxima</a></li>
+
+              {% endif %}
+            </ul>
+          </nav>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="" class="rounded mr-2" alt="...">
+    <strong class="mr-auto">Bootstrap</strong>
+    <small class="text-muted">just now</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    See? Just like this.
+  </div>
+</div>
+
+
+
+<script>
+
+document.getElementById('1').onclick = function(e){
+  console.log('teste')
+}
+</script>

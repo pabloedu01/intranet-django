@@ -5,12 +5,12 @@ var notify = $.notify('<i class="fa fa-bell-o"></i><strong>Loading</strong> page
     delay: 2000,
     showProgressbar: true,
     timer: 300,
-    animate: {
-        enter: 'animated fadeInDown',
-        exit: 'animated fadeOutUp'
+    animate:{
+        enter:'animated fadeInDown',
+        exit:'animated fadeOutUp'
     }
 });
 
-setTimeout(function () {
+setTimeout(function() {
     notify.update('message', '<i class="fa fa-bell-o"></i><strong>Loading</strong> Inner Data.');
 }, 1000);

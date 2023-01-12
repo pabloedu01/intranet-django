@@ -104,7 +104,7 @@ class BeneficiarioAdmin(admin.ModelAdmin):
     search_fields = ['name', 'cpf', 'cnpj']
     ordering = ['name']
     # raw_id_fields = ['empresa']
-    list_display = ('name','cpf', 'Cargo','grupo','Empresa',  'Criação', 'Alteração')
+    list_display = ('name','cpf', 'Cargo','Empresa',  'Criação', 'Alteração')
 
 @admin.register(Empresa)
 class EmpresaAdmin(admin.ModelAdmin):
@@ -146,5 +146,12 @@ class Tipo_CartaoAdmin(admin.ModelAdmin):
 
 @admin.register(Cartao)
 class Tipo_Cartao(admin.ModelAdmin):
-    # list_display = ['numero','tipo_cartao']
-    pass
+    # def ben(self, obj):
+    #     ben = obj.id_beneficiario
+    #     # Grupo.objects.get(id=obj.beneficiario.grupo_id).name
+    #     print(ben)
+    #     return(ben)
+    search_fields = ['numero_cartao','id_beneficiario__name','tipo_cartao__tipo_cartao  ']
+    list_display = ['numero_cartao','tipo_cartao','status','id_beneficiario']
+    list_filter = ['status','tipo_cartao__tipo_cartao']
+    # pass
