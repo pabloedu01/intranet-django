@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'relatorios',
     'dashboards',
-    'debug_toolbar'
+    # 'debug_toolbar'
 ]
 
 MIDDLEWARE = [
@@ -63,12 +63,10 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-INTERNAL_IPS = [
-    # ...
-    "127.0.0.1",
-    "localhost"
-    # ...
-]
+# INTERNAL_IPS = [
+#     "127.0.0.1",
+#     "localhost"    
+# ]
 
 
 ROOT_URLCONF = 'intranet.urls'
