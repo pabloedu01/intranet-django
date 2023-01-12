@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRETKEY')
 DEBUG = True
 
 # ALLOWED_HOSTS = os.environ.get('HOST_AUTORIZATION')
-ALLOWED_HOSTS = ['intranet.tunapconnect.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,10 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cadastros',
     'financeiro',
-    'authentication',
-    'sass_processor',
-    'relatorios',
-    'dashboards',
+    # 'authentication',
+    # 'sass_processor',
+    # 'relatorios',
+    # 'dashboards',
     # 'debug_toolbar'
 ]
 
