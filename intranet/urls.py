@@ -15,5 +15,5 @@ urlpatterns = [
     path('',include('financeiro.urls')),
     path('',include('dashboards.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
-    # path('dashboards',include('dashboards.urls'))
+
 ]
