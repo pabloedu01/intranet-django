@@ -9,7 +9,6 @@ PassengerPython "/virtualenv/public_html/intranet.tunapconnect.com/3.8/bin/pytho
 </IfModule>
 # DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
 RewriteEngine On
-RewriteBase /
+RewriteRule /static/ /home/pnix6jtu50c4/public_html/static
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)$ mysite.fcgi/$1 [QSA,L]
