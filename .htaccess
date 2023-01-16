@@ -1,7 +1,8 @@
 # DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
 PassengerAppRoot "/home/pnix6jtu50c4/public_html/intranet.tunapconnect.com"
 PassengerBaseURI "/"
-PassengerPython "/home/pnix6jtu50c4/virtualenv/public_html/intranet.tunapconnect.com/3.8/bin/python"
+#PassengerPython "/home/pnix6jtu50c4/virtualenv/public_html/intranet.tunapconnect.com/3.8/bin/python"
+PassengerPython "/virtualenv/public_html/intranet.tunapconnect.com/3.8/bin/python"
 # DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
 # DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
 <IfModule Litespeed>
