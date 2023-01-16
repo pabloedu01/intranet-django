@@ -15,6 +15,7 @@ import os
 import pymysql
 pymysql.install_as_MySQLdb()
 from dotenv import load_dotenv
+import json
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRETKEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = json.loads(os.environ['DJANGO_HOST_AUTORIZATION'])
 
 
 # Application definition
