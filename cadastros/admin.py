@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+from django.utils.html import format_html
 
 # Register your models here.
 @admin.register(Banco)
@@ -77,6 +78,7 @@ class CartaoInline(admin.TabularInline):
 
 @admin.register(Beneficiario)
 class BeneficiarioAdmin(admin.ModelAdmin):
+    
     def clean(self):
         cleaned_data = self.cleaned_data
         cpf = cleaned_data.get('cpf')
@@ -84,6 +86,8 @@ class BeneficiarioAdmin(admin.ModelAdmin):
         if cpf == cnpj:
             raise forms.ValidationError(u"You haven't set a valid department. Do you want to continue?")
         return cleaned_data
+    autocomplete_fields = ['empresa']
+    
     inlines = [TelefonesInline, EmailInline, PixInline, Conta_BancariaInline,CartaoInline]
     def Cargo(self, obj):
         return obj.cargo
@@ -104,7 +108,11 @@ class BeneficiarioAdmin(admin.ModelAdmin):
     search_fields = ['name', 'cpf', 'cnpj']
     ordering = ['name']
     # raw_id_fields = ['empresa']
-    list_display = ('name','cpf', 'Cargo','Empresa',  'Criação', 'Alteração')
+    def deletar(self, obj):
+        return format_html('<a class="btn" href="/admin/cadastros/beneficiario/{}/delete/">deletar</a>', obj.id)
+    def visualizar(self, obj):
+        return format_html('<a class="btn" href="/admin/cadastros/beneficiario/{}/change/">visualizar</a>', obj.id)
+    list_display = ('name','cpf', 'Cargo','Empresa',  'Criação', 'Alteração','visualizar','deletar')
 
 @admin.register(Empresa)
 class EmpresaAdmin(admin.ModelAdmin):
