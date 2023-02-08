@@ -42,7 +42,7 @@ class Grupo(models.Model):
 class Empresa(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=240)
-    cnpj = models.CharField(max_length=13, blank=True)
+    cnpj = models.CharField(max_length=14, blank=True)
     grupo = models.ForeignKey('Grupo',related_name='empresas', on_delete=models.CASCADE)
     updated_at = models.DateTimeField(blank = True, auto_now=True)
     created_at = models.DateTimeField(blank = True, auto_now_add=True)
