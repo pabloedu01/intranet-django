@@ -12,6 +12,6 @@ jobs:
       - name: Install SSH client
         run: ls
       - name: install ssh
-        run: apt-get install -y openssh-client
+        run: sudo apt-get install -y openssh-client
       - name: connect_ssh
         run: ssh -l teste localhost
