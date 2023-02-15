@@ -17,7 +17,6 @@ class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
     autocomplete_fields = ['beneficiario']
     list_display = ['id','beneficiario','empresa','value','owner','status','tipo_pagamento','visualizar','deletar']
     list_filter = ['tipo_pagamento','owner']   
-    
     def save_model(self, request, obj, form, change):
         if request.user.is_superuser == False:
             owner = request.user

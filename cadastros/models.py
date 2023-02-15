@@ -41,13 +41,14 @@ class Grupo(models.Model):
 
 class Empresa(models.Model):
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=240)
+    name = models.CharField(max_length=240, verbose_name='Razão Social')
     cnpj = models.CharField(max_length=14, blank=True)
     grupo = models.ForeignKey('Grupo',related_name='empresas', on_delete=models.CASCADE)
     updated_at = models.DateTimeField(blank = True, auto_now=True)
     created_at = models.DateTimeField(blank = True, auto_now_add=True)
     class Meta:
         unique_together = ('cnpj',)
+        db_table = 'empresas'
     def __str__(self):
         if self.name is None:
             return ''

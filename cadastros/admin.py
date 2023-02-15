@@ -121,6 +121,7 @@ class EmpresaAdmin(admin.ModelAdmin):
         grupo = obj.id.name
         return grupo
     list_display = ['name']
+    readonly_fields = ['name']
 
 @admin.register(Grupo)
 class GrupoaAdmin(admin.ModelAdmin):
