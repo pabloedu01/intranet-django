@@ -12,6 +12,6 @@ jobs:
       - name: Install SSH client
         run: ls
       - name: install ssh
-        run: sudo apt-get install -y openssh-client
+        run: sudo apt-get install -y openssh-client sshpass
       - name: connect_ssh
-        run: ssh -l ${{ secrets.SSH_HOST }} localhost
+        run: sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} && ls
