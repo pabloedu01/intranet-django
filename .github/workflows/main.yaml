@@ -14,4 +14,4 @@ jobs:
       - name: install ssh
         run: sudo apt-get install -y openssh-client sshpass
       - name: connect_ssh
-        run: sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}
+        run: sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh -t ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'ls'
