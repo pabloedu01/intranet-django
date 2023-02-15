@@ -14,4 +14,4 @@ jobs:
       - name: install ssh
         run: sudo apt-get install -y openssh-client
       - name: connect_ssh
-        run: ssh -l teste localhost
+        run: ssh -l ${{ secrets.SSH_HOST }} localhost
