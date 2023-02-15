@@ -120,8 +120,9 @@ class EmpresaAdmin(admin.ModelAdmin):
     def grupo(self, obj):
         grupo = obj.id.name
         return grupo
+    autocomplete_fields = ['grupo']
     list_display = ['name']
-    readonly_fields = ['name']
+    readonly_fields = ['name', 'cnpj']
 
 @admin.register(Grupo)
 class GrupoaAdmin(admin.ModelAdmin):
