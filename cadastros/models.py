@@ -42,7 +42,7 @@ class Grupo(models.Model):
 class Empresa(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=240, verbose_name='Razão Social')
-    apelido = models.CharField(max_length=240, verbose_name='Nome Fantasia')
+    apelido = models.CharField(max_length=240, verbose_name='Nome Fantasia', null=True, blank=True)
     cnpj = models.CharField(max_length=14, blank=True)
     grupo = models.ForeignKey('Grupo',related_name='empresas', on_delete=models.CASCADE)
     updated_at = models.DateTimeField(blank = True, auto_now=True)
@@ -51,8 +51,9 @@ class Empresa(models.Model):
         unique_together = ('cnpj',)
         db_table = 'empresas'
     def __str__(self):
-        if self.name is None:
-            return ''
+        if self.apelido is None:
+            self.apelido = self.name
+            return self.apelido
         else:     
             return self.apelido
 
