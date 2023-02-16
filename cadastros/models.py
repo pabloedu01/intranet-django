@@ -54,7 +54,7 @@ class Empresa(models.Model):
         if self.name is None:
             return ''
         else:     
-            return self.name
+            return self.apelido
 
 class BeneficiarioTelefone(models.Model):
     id = models.BigAutoField(primary_key=True)

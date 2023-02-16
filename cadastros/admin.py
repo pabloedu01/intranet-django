@@ -78,7 +78,6 @@ class CartaoInline(admin.TabularInline):
 
 @admin.register(Beneficiario)
 class BeneficiarioAdmin(admin.ModelAdmin):
-    
     def clean(self):
         cleaned_data = self.cleaned_data
         cpf = cleaned_data.get('cpf')
@@ -105,6 +104,7 @@ class BeneficiarioAdmin(admin.ModelAdmin):
         data = obj.updated_at
         data = data.strftime("%d/%m/%Y %H:%M:%S")
         return data
+    
     search_fields = ['name', 'cpf', 'cnpj']
     ordering = ['name']
     # raw_id_fields = ['empresa']
@@ -120,7 +120,9 @@ class EmpresaAdmin(admin.ModelAdmin):
     def grupo(self, obj):
         grupo = obj.id.name
         return grupo
+    
     autocomplete_fields = ['grupo']
+    raw_id_fields = ['grupo']
     list_display = ['name']
     readonly_fields = ['name', 'cnpj']
 
