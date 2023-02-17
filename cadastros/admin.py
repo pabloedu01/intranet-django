@@ -116,7 +116,7 @@ class BeneficiarioAdmin(admin.ModelAdmin):
 
 @admin.register(Empresa)
 class EmpresaAdmin(admin.ModelAdmin):
-    search_fields = ['name']
+    search_fields = ['name','apelido','cnpj']
     def grupo(self, obj):
         grupo = obj.id.name
         return grupo

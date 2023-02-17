@@ -118,8 +118,7 @@ class Beneficiario(models.Model):
 
     def save(self, *args, **kwargs):
             self.full_clean()
-            return super().save(*args, **kwargs)
-        
+            return super().save(*args, **kwargs)     
 
 class Pix(models.Model):
     id_pix = models.BigAutoField(primary_key=True)
