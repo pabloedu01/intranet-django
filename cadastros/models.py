@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 class Banco(models.Model):
     id_banco = models.BigAutoField(primary_key=True)
@@ -45,6 +46,7 @@ class Empresa(models.Model):
     apelido = models.CharField(max_length=240, verbose_name='Nome Fantasia', null=True, blank=True)
     cnpj = models.CharField(max_length=14, blank=True)
     grupo = models.ForeignKey('Grupo',related_name='empresas', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Responsável')
     updated_at = models.DateTimeField(blank = True, auto_now=True)
     created_at = models.DateTimeField(blank = True, auto_now_add=True)
     class Meta:
