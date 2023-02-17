@@ -85,7 +85,7 @@ class BeneficiarioAdmin(admin.ModelAdmin):
         if cpf == cnpj:
             raise forms.ValidationError(u"You haven't set a valid department. Do you want to continue?")
         return cleaned_data
-    autocomplete_fields = ['empresa']
+    
     
     inlines = [TelefonesInline, EmailInline, PixInline, Conta_BancariaInline,CartaoInline]
     def Cargo(self, obj):
@@ -104,10 +104,9 @@ class BeneficiarioAdmin(admin.ModelAdmin):
         data = obj.updated_at
         data = data.strftime("%d/%m/%Y %H:%M:%S")
         return data
-    
+    autocomplete_fields = ['empresa']
     search_fields = ['name', 'cpf', 'cnpj']
     ordering = ['name']
-    # raw_id_fields = ['empresa']
     def deletar(self, obj):
         return format_html('<a class="btn" href="/admin/cadastros/beneficiario/{}/delete/">deletar</a>', obj.id)
     def visualizar(self, obj):
