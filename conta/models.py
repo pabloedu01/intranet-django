@@ -4,6 +4,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 class conta(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    cod_logix = models.IntegerField()
+    cod_logix = models.IntegerField(unique=True, blank=False, null=False)
     def __str__(self):
         return self.user.username
