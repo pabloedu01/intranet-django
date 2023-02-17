@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'sass_processor',
     'relatorios',
     'dashboards',
-    'debug_toolbar'
+    'debug_toolbar',
+    'conta'
 ]
 
 MIDDLEWARE = [
