@@ -78,14 +78,6 @@ class CartaoInline(admin.TabularInline):
 
 @admin.register(Beneficiario)
 class BeneficiarioAdmin(admin.ModelAdmin):
-    def clean(self):
-        cleaned_data = self.cleaned_data
-        cpf = cleaned_data.get('cpf')
-        cnpj = cleaned_data.get('cnpj')
-        if cpf == cnpj:
-            raise forms.ValidationError(u"You haven't set a valid department. Do you want to continue?")
-        return cleaned_data
-    
     
     inlines = [TelefonesInline, EmailInline, PixInline, Conta_BancariaInline,CartaoInline]
     def Cargo(self, obj):
@@ -112,6 +104,23 @@ class BeneficiarioAdmin(admin.ModelAdmin):
     def visualizar(self, obj):
         return format_html('<a class="btn" href="/admin/cadastros/beneficiario/{}/change/">visualizar</a>', obj.id)
     list_display = ('name','cpf', 'Cargo','Empresa',  'Criação', 'Alteração','visualizar','deletar')
+    readonly_fields = ['owner']
+    def get_queryset(self, request):
+        if request.user.is_superuser == False:
+            queryset = super().get_queryset(request)
+            queryset = queryset.filter(owner=request.user).all()
+            return queryset
+        else:
+            queryset = super().get_queryset(request)
+            queryset = queryset.all()
+            return queryset
+    def save_model(self, request, obj, form, change):
+        if request.user.is_superuser == False:
+            owner = request.user
+            obj.owner = owner
+        else:
+            pass
+        super(BeneficiarioAdmin, self).save_model(request, obj, form, change)
 
 @admin.register(Empresa)
 class EmpresaAdmin(admin.ModelAdmin):
@@ -124,7 +133,15 @@ class EmpresaAdmin(admin.ModelAdmin):
     raw_id_fields = ['grupo']
     list_display = ['name']
     readonly_fields = ['name', 'cnpj']
-
+    def get_queryset(self, request):
+        if request.user.is_superuser == False:
+            queryset = super().get_queryset(request)
+            queryset = queryset.filter(owner=request.user).all()
+            return queryset
+        else:
+            queryset = super().get_queryset(request)
+            queryset = queryset.all()
+            return queryset
 @admin.register(Grupo)
 class GrupoaAdmin(admin.ModelAdmin):
     search_fields = ['name']

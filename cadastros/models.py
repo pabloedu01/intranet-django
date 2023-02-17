@@ -102,6 +102,7 @@ class Beneficiario(models.Model):
     cnpj = models.CharField(unique=True, max_length=19, blank=True, null=True)
     cpf = models.CharField(unique=True, max_length=19, blank=True, null=True)
     cargo = models.ForeignKey(Cargo, on_delete=models.CASCADE, default=1)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Responsável')
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
