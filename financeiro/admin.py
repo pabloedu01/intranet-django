@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 from django.utils.html import format_html
+from django.core.exceptions import ValidationError  
 
 @admin.register(Solicitacao_Pagamento)
 class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
@@ -23,6 +24,7 @@ class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
             obj.owner = owner
         else:
             pass
+        
         if request.user.is_superuser == False:
             obj.status = Status_Solicitacao.objects.get(id=1)
         super(Solicitacao_PagamentoAdmin, self).save_model(request, obj, form, change)
@@ -36,3 +38,9 @@ class Solicitacao_PagamentoAdmin(admin.ModelAdmin):
             queryset = super().get_queryset(request)
             queryset = queryset.all()
             return queryset
+    def clean(self):
+        cleaned_data = super().clean()
+        tipo_pagamento = cleaned_data.get("tipo_pagamento")
+        # print(tipo_pagamento)
+        if not tipo_pagamento:
+            raise ValidationError("O campo tipo_pagamento é obrigatório.")
