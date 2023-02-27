@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'relatorios',
     'dashboards',
     'debug_toolbar',
-    'conta'
+    'conta',
+    'core'
 ]
 
 MIDDLEWARE = [

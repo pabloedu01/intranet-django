@@ -7,4 +7,3 @@ migrations
 staticfiles
 gunicorn
 media
-static

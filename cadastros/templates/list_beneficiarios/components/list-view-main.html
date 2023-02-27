@@ -1,0 +1,90 @@
+{% load static %}
+{% load sass_tags %}
+
+<div class="feature-products box-col-12">
+  <div class="row">
+      <form action="beneficiarios" method="get">
+        <div class="form-group">
+          <input class="form-control" type="search" placeholder="Buscar.." data-original-title="" title="" name="search"><i class="fa fa-search"></i>
+        </div>
+      </form>
+</div>
+
+
+
+
+
+
+<div class="col-xl">
+  <div class="card">
+    <div class="card-header">
+      <h5>Lista de beneficiários</h5>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for beneficiario in beneficiarios %}
+          <tr>
+            <th scope="row">{{beneficiario.id}}</th>
+            <td>{{beneficiario.name}}</td>
+            <td>{{beneficiario.cpf}}</td>
+            <td>{{beneficiario.cargo}}</td>
+            <td>{{beneficiario.empresa}}</td>
+            <td>
+              <button class="btn btn-success btn-xs" type="button" data-original-title="btn btn-danger btn-xs" title="">Visualizar</button>
+              <button class="btn btn-danger btn-xs" type="button" data-original-title="btn btn-danger btn-xs" title="">Apagar</button>
+            </td>
+            
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+  {% if beneficiarios.has_other_pages %}
+  <div class="job-pagination">
+    <nav aria-label="step-links">
+      
+      <ul class="pagination pagination-primary">
+        {% if beneficiarios.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ beneficiarios.previous_page_number }}{{ query|urlencode }}">Página anterior</a></li>
+        {% endif %}
+        {% for i in beneficiarios.paginator.page_range %}
+        {% if beneficiarios.number == i %}
+        <li class="page-item active"><a class="page-link" href="?page={{ i }}{{ query|urlencode }}">{{i }}</a></li>
+      
+        {% else %}
+      <li class="page-item"><a class="page-link" href="?page={{ i }}{{ query|urlencode }}">{{ i }}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if beneficiarios.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ beneficiarios.next_page_number }}{{ query|urlencode }}">Próxima</a></li>
+      {% endif %} 
+    </ul>
+       
+  </nav>
+    
+  </div>
+  {% endif %}
+
+
+  
+
+
+
+
+</div>
